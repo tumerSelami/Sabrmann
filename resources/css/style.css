@@ -12,7 +12,7 @@ html {
 
 * {
     box-sizing: border-box;
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     margin: 0;
     padding: 0;
 }
@@ -28,22 +28,22 @@ body {
 } */
 
 h1 {
-    font-size: clamp(3rem, 4.6vw, 6.6rem); 
+    font-size: 6.6rem; 
 }
 
 h2 {
-    font-size: clamp(2.4rem, 3.6vw, 4rem); 
+    font-size: 4.6rem; 
     padding-block: 2rem;
     text-align: center;
 }
 
 h3 {
-    font-size: clamp(2rem, 3vw, 3.6rem); 
+    font-size: 3.6rem; 
     padding-block: 1.5rem;
 }
 
 h4 {
-    font-size: clamp(1.8rem, 2.6vw, 3rem); 
+    font-size: 3rem; 
     padding-block: 1rem;
 }
 
@@ -179,7 +179,7 @@ nav {
 }
 
 #slider-description {
-    width: min(700px, 60%);
+    width: min(660px, 66%);
 }
 
 #slider-description p {
@@ -202,6 +202,7 @@ nav {
 }
 
 #firm-bio,
+#firm-description,
 #firm-hallmarks {
     flex: 1;
 }
@@ -215,14 +216,10 @@ nav {
     width: 22vw;
 }
 
-#firm-description {
-    flex: 1;
-}
-
 #firm-img-cont {
     aspect-ratio: 1 / 1;
-    max-width: 26rem;
-    max-height: 25rem;
+    max-width: 21rem;
+    max-height: 20rem;
 }
 
 #firm-bio img {
@@ -239,7 +236,7 @@ nav {
 .hallmark {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -250,6 +247,7 @@ nav {
 .hallmark img {
     max-width: 9.4rem;
 }
+
 
 #product-categories {
     margin-top: 4rem;
@@ -269,6 +267,7 @@ nav {
     color: var(--secondary);
     width: 26rem;
     height: 26rem;
+    aspect-ratio: 1 / 1;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -338,7 +337,7 @@ nav {
 
 .blog {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     flex: 1;
     flex-wrap: wrap;
     align-items: center;
@@ -351,12 +350,8 @@ nav {
     flex: 1;
 }
 
-/* .blog-img-cont {
-} */
-
 .blog-img-cont img {
     object-fit: cover;
-    max-width: 100%;
     height: 100%;
     border-radius: 1rem 0 0 1rem;
     display: block;
@@ -382,10 +377,14 @@ footer a {
 footer > .grid {
     width: min(135rem, 95%);
     margin-inline: auto;
-    padding-block: 4rem;
+    padding-bottom: 4.8rem;
     grid-template-columns: repeat(6, 1fr);
     place-content: start / center;
 } 
+
+footer > .grid > div:not(#contact) {
+    transform: translateY(-3.5rem);
+}
 
 #contact {
     aspect-ratio: 1 / 1;
