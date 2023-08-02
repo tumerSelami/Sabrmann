@@ -1,9 +1,11 @@
 /*BODY AND GENERAL RULES*/
 
+@import url('https://fonts.googleapis.com/css2?family=Aleo:wght@300;400&family=Righteous&display=swap');
+
 :root {
     --primary: hsl(30, 80%, 30%);
     --secondary: hsl(30, 4%, 8%);
-    --white: hsl(0, 0%, 98%);
+    --white: hsl(0, 0%, 97%);
 }
 
 html {
@@ -18,33 +20,48 @@ html {
 }
 
 body {
-    /* font-family: 'Baskervville', sans-serif; */
+    font-family: 'Aleo', serif;
     background-color: var(--white);
     color: var(--white);
 }
 
-/* h1, h2, h3, h4, h5, h6 {
-    font-family: 'Aboreto', Verdana, Geneva, Tahoma, sans-serif;
-} */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Righteous', sans-serif;
+    letter-spacing: 0.4rem;
+}
 
 h1 {
-    font-size: clamp(4rem, 4.6vw, 6.6rem); 
+    font-size: clamp(4rem, 4.6vw, 6rem); 
 }
 
 h2 {
-    font-size: clamp(3rem, 3.6vw, 4rem); 
-    padding-block: 2rem;
+    font-size: clamp(3rem, 3.6vw, 3.8rem); 
+    padding-block: 1.5rem;
     text-align: center;
 }
 
 h3 {
-    font-size: clamp(2.8rem, 3vw, 3.6rem); 
-    padding-block: 1.5rem;
+    font-size: clamp(2.8rem, 3vw, 3rem); 
+    padding-block: 1rem;
 }
 
 h4 {
-    font-size: clamp(2.4rem, 2.6vw, 3rem); 
+    font-size: clamp(2.1rem, 2.6vw, 2.4rem); 
     padding-block: 1rem;
+}
+
+p {
+    opacity: 0.95;
+}
+
+a {
+    color: var(--primary);
+    font-weight: 300;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: 400;
 }
 
 section {
@@ -55,35 +72,28 @@ img {
     max-width: 100%;
 }
 
-/* button {
-    color: var(--secondary);
-    background-color: var(--white);
-    transition: all .3s linear;
+button {
+    font-family: inherit;
+    font-size: 1.8rem;
+    transition: all .4s linear;
     border: none;
     border-radius: .4rem;
-    padding: .8rem 4rem;
-    position: relative;
+    padding: .8rem 3rem;
     cursor: pointer;
     display: block;
     margin-inline: auto;
 }
 
-button::before {
-    content: '';
-    position: absolute;
-    background-color: var(--primary);
-    width: 100%;
-    height: 100%;
-    border-radius: .4rem;
-    left: -5%;
-    top: -20%;
-    z-index: -1;
+nav a,
+.project a,
+#footer-bar a {
+    color: var(--white);
 }
 
-button:hover {
-    color: var(--white);
-    background-color: var(--secondary);
-} */
+#blogs button,
+#contact button {
+    width: 100%;
+}
 
 .flex {
     display: flex;
@@ -115,17 +125,16 @@ button:hover {
     text-align: center;
 }
 
-.margin-i-a {
-    display: block;
-    margin-inline: auto;
-}
-
 .primary-bg {
     background-color: var(--primary);
 }
 
 .secondary-bg {
     background-color: var(--secondary);
+}
+
+.box-shadow {
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.6);
 }
 
 /*Navigation Bar*/
@@ -144,6 +153,10 @@ nav {
 #nav-links-logo {
     max-height: 4.6rem;
     cursor: pointer;
+}
+
+#nav-right img:hover {
+    opacity: 0.9;
 }
 
 #nav-links {
@@ -175,11 +188,11 @@ nav {
     height: 100%;
     z-index: -2;
     border-radius: 2rem;
-    background-color: hsla(0, 0%, 0%, 0.25);
+    background-color: hsla(0, 0%, 0%, 0.3);
 }
 
 #slider-description {
-    width: min(660px, 66%);
+    width: min(700px, 70%);
 }
 
 #slider-description p {
@@ -195,6 +208,31 @@ nav {
     transform: rotate(0.5turn);
 }
 
+#hero button {
+    font-size: inherit;
+    background-color: var(--white);
+    color: var(--secondary);
+    padding-inline: 15%;
+    position: relative;
+}
+
+#hero button::before {
+    content: '';
+    position: absolute;
+    background-color: var(--primary);
+    width: 100%;
+    height: 100%;
+    border-radius: .4rem;
+    left: -1rem;
+    top: -1rem;
+    z-index: -1;
+}
+
+#hero button:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
 /*About Firm and Product*/
 
 #firm > .flex {
@@ -203,6 +241,7 @@ nav {
 
 #firm-bio,
 #firm-description,
+#firm-img-cont,
 #firm-hallmarks {
     flex: 1;
 }
@@ -232,6 +271,7 @@ nav {
 
 #firm-hallmarks {
     justify-content: center;
+    min-width: 50%;
 }
 
 .hallmark {
@@ -246,7 +286,7 @@ nav {
 }
 
 .hallmark img {
-    max-width: 9.4rem;
+    width: min(9.4rem, 10vw);
 }
 
 
@@ -291,7 +331,7 @@ nav {
 .category a {
     position: absolute;
     top: 45%;
-    right: -3.7rem;
+    right: -4rem;
     transform: rotate(90deg);
 }
 
@@ -336,9 +376,21 @@ nav {
     align-items: center;
 }
 
+#blogs button {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+#blogs button:hover {
+    background-color: var(--primary);
+}
+
+#blogs p {
+    padding-block: 1rem 2rem;
+}
+
 .blog {
     display: flex;
-    gap: 2rem;
     flex: 1;
     flex-wrap: wrap;
     align-items: center;
@@ -361,7 +413,11 @@ nav {
 
 .blog-description,
 .blog-img-cont {
-    min-width: 16.5vw;
+    min-width: 19vw;
+}
+
+.blog-description {
+    padding: 2rem;
 }
 
 /*Footer*/
@@ -404,6 +460,30 @@ footer > .grid > div:not(#contact) {
     left: -2rem;
     top: -2rem;
     z-index: -1;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.6);
+}
+
+#contact button {
+    background-color: var(--white);
+    color: var(--secondary);
+}
+
+#contact button:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.info {
+    margin-block: 1rem;
+    align-items: center;
+}
+
+.info p {
+    font-size: 1.7rem;
+}
+
+.info img {
+    width: 4.8rem;
 }
 
 #footer-bar {
@@ -414,13 +494,6 @@ footer > .grid > div:not(#contact) {
 
 #footer-bar * {
     font-size: 1.8rem;
-}
-
-#footer-bar button {
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%);
 }
 
 #footer-left,
@@ -479,13 +552,13 @@ footer > .grid > div:not(#contact) {
     }
 }
 
-@media (width <= 655px) {
+@media (width <= 660px) {
     html {
         font-size: 7.5px;
     }
 
-    .category {
-        width: 100%;
+    nav.secondary-bg {
+        background-color: var(--primary);
     }
 
     .padding-i-4 {
@@ -527,7 +600,11 @@ footer > .grid > div:not(#contact) {
     }
 }
 
-@media (width <= 470px  ) {
+@media (width <= 510px  ) {
+    .category {
+        width: 100%;
+    }
+
     #footer-right,
     #footer-left {
         display: block;
@@ -542,7 +619,11 @@ footer > .grid > div:not(#contact) {
         min-width: 40%;
     }
 
-    #brand-logo {
-        background-color: var(--secondary);
+    .blog p {
+        display: none;
     }
 }
+
+/* @media (1100px <= width <= 1300px) {
+    h3
+} */
