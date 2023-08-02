@@ -14,7 +14,7 @@ html {
 
 * {
     box-sizing: border-box;
-    font-size: clamp(1.8rem, 1.8vw, 2.2rem); 
+    font-size: clamp(1.6rem, 1.8vw, 2rem); 
     margin: 0;
     padding: 0;
 }
@@ -31,24 +31,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: clamp(4rem, 4.6vw, 6rem); 
+    font-size: clamp(3.6rem, 4vw, 5.6rem); 
     text-shadow: 2px 2px 4px var(--secondary);
 }
 
 h2 {
-    font-size: clamp(3rem, 3.6vw, 3.8rem); 
+    font-size: clamp(3rem, 3.4vw, 3.6rem); 
     padding-block: 1.5rem;
     text-align: center;
-    text-shadow: 2px 2px 4px var(--secondary);
+    text-shadow: 1px 1px 2px var(--secondary);
 }
 
 h3 {
-    font-size: clamp(2.8rem, 3vw, 3rem); 
+    font-size: clamp(2.4rem, 2.6vw, 2.8rem); 
     padding-block: 1rem;
 }
 
 h4 {
-    font-size: clamp(2.1rem, 2.6vw, 2.4rem); 
+    font-size: clamp(2rem, 2.4vw, 2.2rem); 
     padding-block: 1rem;
 }
 
@@ -66,7 +66,7 @@ a:hover {
     font-weight: 400;
 }
 
-section {
+section:not(#hero) {
     margin-block: 7rem;
 }
 
@@ -172,16 +172,13 @@ nav {
 
 /*Hero and Slider*/
 
-#slider {
-    align-items: center;
-}
-
 #slider-content {
-    flex: 1;
-    height: calc(100dvh - 7rem - 6.6rem);
+    height: calc(100dvh - 6.6rem);
     background: center / cover no-repeat url('https://images.unsplash.com/photo-1445937888010-cc262f556033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
-    place-items: center;
-    transform: translateY(-4rem);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 0;
 }
 
 #slider-content::after {
@@ -195,14 +192,14 @@ nav {
 }
 
 #slider-description {
-    width: min(700px, 70%);
+    width: min(700px, 75%);
 }
 
 #slider-description p {
     margin-block: 2rem 3rem;
 }
 
-.arrow:hover {
+#slider-content img:hover {
     cursor: pointer;
     opacity: .9;
 }
@@ -236,7 +233,15 @@ nav {
     color: var(--white);
 }
 
+#hero p {
+    opacity: 1;
+}
+
 /*About Firm and Product*/
+
+#firm-and-categories {
+    margin-top: 0 !important;
+}
 
 #firm > .flex {
     flex-wrap: wrap;
@@ -336,7 +341,7 @@ nav {
 .category a {
     position: absolute;
     top: 45%;
-    right: -4rem;
+    right: -3.6rem;
     transform: rotate(90deg);
 }
 
@@ -600,7 +605,8 @@ footer > .grid > div:not(#contact) {
         justify-content: space-between;
     }
 
-    .arrow {
+    .arrow,
+    #scroll {
         width: 4.2rem;
     }
 }
