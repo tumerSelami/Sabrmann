@@ -7,31 +7,42 @@ for (let img of imgs) {
 const slider = document.getElementById('slider-content');
 const leftArrow = document.getElementById('left-arrow');
 const rightArrow = document.getElementById('right-arrow');
+const heading = document.querySelector('h1');
+const paragraph = document.querySelector('#slider p');
+const sliderBtn = document.querySelector('#slider button');
+const sliderDescription = document.querySelector('#slider-description');
 
 const sliderContent = [
     {
         title: 'Kent Mobilyaları',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi porro, cupiditate molestias quam quo et expedita iure repudiandae accusantium.',
-        image: 'https://images.unsplash.com/photo-1445937888010-cc262f556033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+        image: 'https://images.unsplash.com/photo-1445937888010-cc262f556033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+        link: '#'
     }, 
     {
         title: 'Dış Aydınlatma Direkleri',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, laborum.',
-        image: 'https://images.unsplash.com/photo-1522013586355-831ecbf8bbf3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+        image: 'https://images.unsplash.com/photo-1522013586355-831ecbf8bbf3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+        link: '#'
     },
     {
         title: 'Lokal Aydınlatma Direkleri',
         description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nobis doloremque placeat. Officiis, architecto dolore.',
-        image: 'https://images.pexels.com/photos/17391841/pexels-photo-17391841/free-photo-of-white-lamp-on-buildings-walls.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        image: 'https://images.pexels.com/photos/17391841/pexels-photo-17391841/free-photo-of-white-lamp-on-buildings-walls.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        link: '#'
     }
 ]
-    
 
 let activeImg = 0;
 
-function changeBackground(num) {
-    slider.style.backgroundImage = `url('${sliderContent[num][image]}')`;
-    console.log(sliderContent[num][image]);
+function changeContent(num) {
+    slider.style.backgroundImage = `url('${sliderContent[num].image}')`;
+    sliderDescription.classList.add('fade-out');
+    setTimeout(() => {
+        sliderDescription.classList.remove('fade-out');
+        heading.innerText = sliderContent[num].title;
+        paragraph.innerText = sliderContent[num].description;
+    }, 1000);
 }
 
 leftArrow.addEventListener('click', () => {
@@ -39,8 +50,7 @@ leftArrow.addEventListener('click', () => {
     if(activeImg < 0) {
         activeImg = sliderContent.length - 1;
     }
-    changeBackground(activeImg);
-    console.log(activeImg);
+    changeContent(activeImg);
 })
 
 rightArrow.addEventListener('click', () => {
@@ -48,6 +58,5 @@ rightArrow.addEventListener('click', () => {
     if(activeImg > sliderContent.length - 1) {
         activeImg = 0;
     }
-    changeBackground(activeImg);
-    console.log(activeImg);
+    changeContent(activeImg);
 })
