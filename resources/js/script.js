@@ -1,16 +1,22 @@
+//Disable dragging in images
+
 const imgs = document.querySelectorAll('img');
 
 for (let img of imgs) {
     img.setAttribute('draggable', 'false');
+    img.setAttribute('loading', 'lazy');
 }
 
+
+//Create Slider Interaction
+
+const leftArrow = document.getElementById('slider-left-arrow');
+const rightArrow = document.getElementById('slider-right-arrow');
 const slider = document.getElementById('slider-content');
-const leftArrow = document.getElementById('left-arrow');
-const rightArrow = document.getElementById('right-arrow');
+const sliderDescription = document.querySelector('#slider-description');
 const heading = document.querySelector('h1');
 const paragraph = document.querySelector('#slider p');
-const sliderBtn = document.querySelector('#slider button');
-const sliderDescription = document.querySelector('#slider-description');
+const sliderLink = document.querySelector('#slider a');
 
 const sliderContent = [
     {
@@ -33,30 +39,43 @@ const sliderContent = [
     }
 ]
 
-let activeImg = 0;
-
-function changeContent(num) {
-    slider.style.backgroundImage = `url('${sliderContent[num].image}')`;
+function changeContent(idx) {
+    slider.style.backgroundImage = `url('${sliderContent[idx].image}')`;
     sliderDescription.classList.add('fade-out');
     setTimeout(() => {
         sliderDescription.classList.remove('fade-out');
-        heading.innerText = sliderContent[num].title;
-        paragraph.innerText = sliderContent[num].description;
+        heading.innerText = sliderContent[idx].title;
+        paragraph.innerText = sliderContent[idx].description;
+        sliderLink.href = sliderContent[idx].link;
     }, 1000);
 }
 
-leftArrow.addEventListener('click', () => {
-    activeImg--;
-    if(activeImg < 0) {
-        activeImg = sliderContent.length - 1;
-    }
-    changeContent(activeImg);
-})
+let activeContent = 0;
 
-rightArrow.addEventListener('click', () => {
-    activeImg++;
-    if(activeImg > sliderContent.length - 1) {
-        activeImg = 0;
+function leftArrowCallback() {
+    activeContent--;
+    if(activeContent < 0) {
+        activeContent = sliderContent.length - 1;
     }
-    changeContent(activeImg);
-})
+    changeContent(activeContent);
+    leftArrow.removeEventListener('click', leftArrowCallback);
+    setTimeout(() => {
+        leftArrow.addEventListener('click', leftArrowCallback)
+    }, 1000);
+}
+
+function rightArrowCallback() {
+    activeContent++;
+    if(activeContent > sliderContent.length - 1) {
+        activeContent = 0;
+    }
+    changeContent(activeContent);
+    rightArrow.removeEventListener('click', rightArrowCallback);
+    setTimeout(() => {
+        rightArrow.addEventListener('click', rightArrowCallback)
+    }, 1000);
+}
+
+leftArrow.addEventListener('click', leftArrowCallback);
+
+rightArrow.addEventListener('click', rightArrowCallback);

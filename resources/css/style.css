@@ -25,7 +25,7 @@ body {
     color: var(--white);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
     font-family: 'Righteous', sans-serif;
     letter-spacing: 0.4rem;
 }
@@ -49,7 +49,7 @@ h3 {
 
 h4 {
     font-size: clamp(2rem, 2.4vw, 2.2rem); 
-    padding-block: 1rem;
+    padding-block: 0.8rem;
 }
 
 p {
@@ -63,7 +63,7 @@ a {
 }
 
 a:hover {
-    font-weight: 400;
+    font-weight: 400 !important;
 }
 
 section:not(#hero) {
@@ -74,7 +74,7 @@ img {
     max-width: 100%;
 }
 
-button {
+button:not(#slider button):not(#blogs > button) {
     font-family: inherit;
     font-size: 1.8rem;
     transition: all .4s linear;
@@ -93,9 +93,24 @@ nav a,
     color: var(--white);
 }
 
-#blogs button,
+.blog button,
 #contact button {
     width: 100%;
+}
+
+.arrow {
+    background-color: hsla(0, 0%, 0%, 0);
+    border: none;
+}
+
+.arrow:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+#slider-right-arrow,
+#blog-right-arrow {
+    transform: rotate(0.5turn);
 }
 
 .flex {
@@ -143,6 +158,11 @@ nav a,
 /*Navigation Bar*/
 
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     padding-right: 4rem;
@@ -173,6 +193,7 @@ nav {
 /*Hero and Slider*/
 
 #slider-content {
+    margin-top: 5.6rem;
     height: calc(100dvh - 5.6rem);
     background: center / cover no-repeat url('https://images.unsplash.com/photo-1445937888010-cc262f556033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
     justify-content: center;
@@ -205,24 +226,20 @@ nav {
     margin-block: 2rem 3rem;
 }
 
-#slider-content img:hover {
-    cursor: pointer;
-    opacity: .9;
-}
-
-#right-arrow {
-    transform: rotate(0.5turn);
-}
-
-#hero button {
+#hero a {
     font-size: inherit;
+    font-weight: 400;
+    padding: .8rem 3rem;
     background-color: var(--white);
     color: var(--secondary);
     padding-inline: 15%;
     position: relative;
+    transition: all .4s linear;
+    border-radius: .4rem;
+    cursor: pointer;
 }
 
-#hero button::before {
+#hero a::before {
     content: '';
     position: absolute;
     background-color: var(--primary);
@@ -234,7 +251,7 @@ nav {
     z-index: -1;
 }
 
-#hero button:hover {
+#hero a:hover {
     background-color: var(--secondary);
     color: var(--white);
 }
@@ -386,18 +403,23 @@ nav {
     align-content: center;
 }
 
+#projects a {
+    color: var(--white);
+    font-weight: 300;
+}
+
 /*Blogs*/
 
 #blogs {
     align-items: center;
 }
 
-#blogs button {
+.blog button {
     background-color: var(--secondary);
     color: var(--white);
 }
 
-#blogs button:hover {
+.blog button:hover {
     background-color: var(--primary);
 }
 
@@ -636,11 +658,11 @@ footer > .grid > div:not(#contact) {
         min-width: 40%;
     }
 
-    .blog p {
+    .blog:first-of-type {
         display: none;
     }
-}
 
-/* @media (1100px <= width <= 1300px) {
-    h3
-} */
+    .blog {
+        display: block;
+    }
+}
