@@ -8,7 +8,7 @@ for (let img of imgs) {
 }
 
 
-//Create Slider Interaction
+//Slider Interaction
 
 const leftArrow = document.getElementById('slider-left-arrow');
 const rightArrow = document.getElementById('slider-right-arrow');
@@ -81,20 +81,34 @@ leftArrow.addEventListener('click', leftArrowCallback);
 rightArrow.addEventListener('click', rightArrowCallback);
 
 
-//Create Page Animation
+//Page Transition
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        console.log(entry);
+        //console.log(entry);
         if(entry.isIntersecting) {
             entry.target.classList.add('show');
         } 
-        else {
-            entry.target.classList.remove('show');
-        }
+        // else {
+        //     entry.target.classList.remove('show');
+        // }
     });
 });
 
 const hiddenELs = document.querySelectorAll('.hidden');
 
 hiddenELs.forEach((el) => observer.observe(el));
+
+//Navbar Transition
+
+const nav = document.querySelector('nav');
+const scrollWatcher = document.createElement('div');
+
+nav.before(scrollWatcher);
+
+const navObserver = new IntersectionObserver((entries) => {
+    console.log(entries);
+    nav.classList.toggle('sticking', !entries[0].isIntersecting);
+}, {rootMargin: '200px 0px 0px 0px'});
+
+navObserver.observe(scrollWatcher);

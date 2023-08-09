@@ -168,7 +168,9 @@ nav a,
 
 /*Navigation Bar*/
 
+
 nav {
+    transition: all 500ms ease-in-out;
     position: fixed;
     top: 0;
     left: 0;
@@ -176,7 +178,14 @@ nav {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding-right: 4rem;
+    padding: 1rem 4rem 1rem 0;
+
+}
+
+nav.sticking {
+    background-color: var(--secondary);
+    padding: 0 4rem 0 0;
+
 }
 
 #brand-logo {
@@ -369,7 +378,7 @@ nav {
     z-index: 1;
     left: -4.5rem;
     top: -4.5rem;
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
 
 }
 
@@ -593,12 +602,15 @@ footer > .grid > div:not(#contact) {
     html {
         font-size: 9px;
     }
-}
 
-@media (width <= 760px) {
     .category {
         width: 20rem;
         height: 20rem;
+    }
+
+    .category::before {
+        left: -3.5rem;
+        top: -3.5rem;
     }
 }
 
@@ -607,20 +619,12 @@ footer > .grid > div:not(#contact) {
         font-size: 7.5px;
     }
 
-    nav.secondary-bg {
-        background-color: var(--primary);
-    }
-
     .padding-i-4 {
         padding-inline: 2rem;
     }
 
     .padding-3 {
         padding-inline: 1.5rem;
-    }
-
-    #brand-logo {
-        max-height: 6.4rem;
     }
 
     #nav-right img,
