@@ -79,3 +79,22 @@ function rightArrowCallback() {
 leftArrow.addEventListener('click', leftArrowCallback);
 
 rightArrow.addEventListener('click', rightArrowCallback);
+
+
+//Create Page Animation
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        console.log(entry);
+        if(entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } 
+        else {
+            entry.target.classList.remove('show');
+        }
+    });
+});
+
+const hiddenELs = document.querySelectorAll('.hidden');
+
+hiddenELs.forEach((el) => observer.observe(el));
