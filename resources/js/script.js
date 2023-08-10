@@ -85,7 +85,6 @@ rightArrow.addEventListener('click', rightArrowCallback);
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        //console.log(entry);
         if(entry.isIntersecting) {
             entry.target.classList.add('show');
         } 
@@ -98,6 +97,7 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenELs = document.querySelectorAll('.hidden');
 
 hiddenELs.forEach((el) => observer.observe(el));
+
 
 //Navbar Transition
 
@@ -112,3 +112,19 @@ const navObserver = new IntersectionObserver((entries) => {
 }, {rootMargin: '200px 0px 0px 0px'});
 
 navObserver.observe(scrollWatcher);
+
+
+//Navbar Mobile Toggle
+
+const toggler = document.getElementById('nav-links-logo');
+
+toggler.addEventListener('click', () => {
+    nav.classList.toggle('show-links');
+})
+
+window.addEventListener("resize", () => {
+    if (document.body.clientWidth > 1100) {
+        nav.classList.remove("show-links");
+      }
+});
+  

@@ -168,7 +168,6 @@ nav a,
 
 /*Navigation Bar*/
 
-
 nav {
     transition: all 500ms ease-in-out;
     position: fixed;
@@ -178,14 +177,39 @@ nav {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 4rem 1rem 0;
-
+    padding: 1rem 4rem;
 }
 
 nav.sticking {
     background-color: var(--secondary);
-    padding: 0 4rem 0 0;
+    padding: 0 4rem;
+}
 
+.show-links {
+    flex-direction: column;
+    height: 100vh;
+}
+
+.show-links #nav-left {
+    justify-content: space-between;
+}
+
+.show-links #nav-links,
+.show-links #nav-right {
+    display: flex;
+    gap: 4rem;
+}
+
+.show-links #nav-links {
+    flex-direction: column;
+}
+
+.show-links #nav-links a {
+    font-size: 3rem;
+}
+
+.show-links #nav-right img {
+    max-height: 5rem;
 }
 
 #brand-logo {
